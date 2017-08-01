@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=99:06:72:29:F6:EA:65:3C:E2:9C:28:BD:89:FE:8B:23:E1:15:6A:FE%3Bcom.basov.simplerealestateapplication
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    99:06:72:29:F6:EA:65:3C:E2:9C:28:BD:89:FE:8B:23:E1:15:6A:FE
+
+    SHA-1 certificate fingerprint:
+    99:06:72:29:F6:EA:65:3C:E2:9C:28:BD:89:FE:8B:23:E1:15:6A:FE
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBc_-sEFd3ZfqQ9fR9Z7vA6R9L9kBV3F8U</string>
+</resources>

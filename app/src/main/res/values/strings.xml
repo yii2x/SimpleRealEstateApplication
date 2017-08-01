@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Simple Real Estate Application</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBc_-sEFd3ZfqQ9fR9Z7vA6R9L9kBV3F8U</string>
+</resources>

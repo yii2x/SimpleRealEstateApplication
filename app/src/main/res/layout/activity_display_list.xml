@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.basov.simplerealestateapplication.PropertyResultActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/viewOnMapBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:text="View on Map"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="445dp" />
+
+        <TableLayout
+            android:id="@+id/tableLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:padding="10dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+        </TableLayout>
+
+    </FrameLayout>
+</ScrollView>

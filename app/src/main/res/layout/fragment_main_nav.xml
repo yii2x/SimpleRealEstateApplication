@@ -1,0 +1,51 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.basov.simplerealestateapplication.MainNavFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/addPropertyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Property" />
+
+        <Button
+            android:id="@+id/oneBedroomsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List One bedrooms" />
+
+        <Button
+            android:id="@+id/twoBedroomsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List Two Bedrooms" />
+
+        <Button
+            android:id="@+id/threeBedroomsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List Three Bedrooms" />
+
+        <Button
+            android:id="@+id/allPropertiesBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List All Properties" />
+
+        <Button
+            android:id="@+id/deleteAllPropertiesBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete All Properties" />
+    </LinearLayout>
+</FrameLayout>
