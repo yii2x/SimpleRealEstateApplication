@@ -16,36 +16,54 @@
             android:id="@+id/addPropertyBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Property" />
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:text="Add Property"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         <Button
             android:id="@+id/oneBedroomsBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List One bedrooms" />
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:text="List One bedrooms"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         <Button
             android:id="@+id/twoBedroomsBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List Two Bedrooms" />
+            android:text="List Two Bedrooms"
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"/>
 
         <Button
             android:id="@+id/threeBedroomsBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List Three Bedrooms" />
+            android:text="List Three Bedrooms"
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"/>
 
         <Button
             android:id="@+id/allPropertiesBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List All Properties" />
+            android:text="List All Properties"
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"/>
 
         <Button
             android:id="@+id/deleteAllPropertiesBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete All Properties" />
+            android:text="Delete All Properties"
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"/>
     </LinearLayout>
 </FrameLayout>

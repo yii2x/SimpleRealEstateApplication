@@ -17,7 +17,10 @@
             android:elevation="0dp"
             android:text="View on Map"
             tools:layout_editor_absoluteX="147dp"
-            tools:layout_editor_absoluteY="445dp" />
+            tools:layout_editor_absoluteY="445dp"
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"/>
 
         <TableLayout
             android:id="@+id/tableLayout1"

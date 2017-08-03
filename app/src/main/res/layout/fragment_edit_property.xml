@@ -208,7 +208,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Save" />
+            android:text="Save"
+            android:background="@drawable/btn_blue_pink_glossy"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"/>
 
 
     </LinearLayout>

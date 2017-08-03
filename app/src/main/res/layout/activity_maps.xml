@@ -16,5 +16,8 @@
         android:id="@+id/viewOnListBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List" />
+        android:text="List"
+        android:background="@drawable/btn_blue_pink_glossy"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"/>
 </FrameLayout>
