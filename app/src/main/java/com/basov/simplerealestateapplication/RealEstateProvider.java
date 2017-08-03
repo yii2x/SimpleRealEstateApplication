@@ -16,6 +16,10 @@ import android.util.Log;
 
 import java.util.HashMap;
 
+/*
+Real estate content provider
+ */
+
 public class RealEstateProvider extends ContentProvider {
     // fields for my content provider
     static final String PROVIDER_NAME = "com.basov.simplerealestateapplication";
@@ -34,6 +38,7 @@ public class RealEstateProvider extends ContentProvider {
         uriMatcher.addURI(PROVIDER_NAME, "property/#", PROPERTY_ID);
     }
 
+    // database handler
     DBHelper dbHelper;
 
     // project map for a query
@@ -74,11 +79,13 @@ public class RealEstateProvider extends ContentProvider {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
+        // create database on first time and on upgrade
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             sqLiteDatabase.execSQL(CREATE_TABLE);
         }
 
+        // drop and recreate database table
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase,
                               int oldVersion, int newVersion) {
@@ -94,6 +101,7 @@ public class RealEstateProvider extends ContentProvider {
     public RealEstateProvider() {
     }
 
+    //delete real estate property
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         // Implement this to handle requests to delete one or more rows.
@@ -123,22 +131,24 @@ public class RealEstateProvider extends ContentProvider {
 
     }
 
+    // get type of request
     @Override
     public String getType(Uri uri) {
         // TODO: Implement this to handle requests for the MIME type of the data
         // at the given URI.
         switch (uriMatcher.match(uri)) {
-            // get all friends birthday records
+            // get all properties records
             case PROPERTIES:
-                return "vnd.android.cusor.dir/vnd.rabor.friends";
-            // get a particular friend birthday
+                return "vnd.android.cusor.dir/vnd.basov.simplerealestateapplication";
+            // get a particular propery
             case PROPERTY_ID:
-                return "vnd.android.cusor.item/vnd.rabor.friends";      //returns a single friend
+                return "vnd.android.cusor.item/vnd.basov.simplerealestateapplication";      //returns a single friend
             default:
                throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
     }
 
+    //insert real estate property
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         // TODO: Implement this to handle requests to insert a new row.

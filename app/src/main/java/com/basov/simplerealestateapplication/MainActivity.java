@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        // create database handler object
         dbHandler = new MyDBHandler(this);
 
+        // get main navigation buttons references.
         addPropertyBtn = (Button) findViewById(R.id.addPropertyBtn);
         oneBedroomsBtn = (Button) findViewById(R.id.oneBedroomsBtn);
         twoBedroomsBtn = (Button) findViewById(R.id.twoBedroomsBtn);
@@ -38,9 +40,14 @@ public class MainActivity extends AppCompatActivity {
         deleteAllPropertiesBtn = (Button) findViewById(R.id.deleteAllPropertiesBtn);
 
 
+        // set buttons onclick listeners.
+
         addPropertyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //switch to property form activity "EditPropertyActivity"
+
                 Intent intent = new Intent(MainActivity.this, EditPropertyActivity.class);
                 startActivity(intent);
 
@@ -50,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         oneBedroomsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //switch to results activity "PropertyResultActivity" and request 1 bedrooms
+
                 Intent intent = new Intent(MainActivity.this, PropertyResultActivity.class);
                 intent.putExtra("rooms","1");
                 startActivity(intent);
@@ -59,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         twoBedroomsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //switch to results activity "PropertyResultActivity" and request 2 bedrooms
+
                 Intent intent = new Intent(MainActivity.this, PropertyResultActivity.class);
                 intent.putExtra("rooms","2");
                 startActivity(intent);
@@ -68,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         threeBedroomsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //switch to results activity "PropertyResultActivity" and request 3 bedrooms
+
                 Intent intent = new Intent(MainActivity.this, PropertyResultActivity.class);
                 intent.putExtra("rooms","3");
                 startActivity(intent);
@@ -77,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         allPropertiesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //switch to results activity "PropertyResultActivity" and request all bedrooms
+
                 Intent intent = new Intent(MainActivity.this, PropertyResultActivity.class);
                 intent.putExtra("rooms","*");
                 startActivity(intent);
@@ -86,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         deleteAllPropertiesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //delete all properties from database table.
+
                 dbHandler = new MyDBHandler(MainActivity.this);
                 dbHandler.deleteAll();
                 Toast.makeText(view.getContext(),

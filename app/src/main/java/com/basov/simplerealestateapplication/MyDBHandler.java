@@ -35,7 +35,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // responsible for creating a table for the first time
+    // responsible for creating a table for the first time or upgrade
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -66,22 +66,26 @@ public class MyDBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // opens database
     public MyDBHandler open() throws SQLException {
         database = getWritableDatabase();   // get reference to the database
         return this;
     }
 
+    // delete all records from table
     public void deleteAll(){
         SQLiteDatabase db =  getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_REAL_ESTATE);
     }
 
+    // closes database
     public void close() {
         database.close();
     }
 
     // Add new row to the database
     public long addRealEstate(RealEstate realEstate) {
+
         // content values is built into Android that allows you to add several values in one statement
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, realEstate.get_name());
@@ -115,9 +119,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public Cursor readEntry(String rooms) {
 
+        // define query conditions
+
         String whereClause = null;
         String[] whereArgs = null;
-
 
         if(rooms.equals("*") == false){
             whereClause = "rooms = ?";
@@ -127,10 +132,12 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
 
 
+        // define query columns
         String[] allColumns = new String[] {
                 COLUMN_ID, COLUMN_NAME, COLUMN_ROOMS, COLUMN_ADDRESS, COLUMN_CITY, COLUMN_STATE, COLUMN_ZIP, COLUMN_LNG, COLUMN_LAT
         };
 
+        // query database table
         Cursor c = database.query(TABLE_REAL_ESTATE, allColumns, whereClause, whereArgs, null,
                 null, null);
 
@@ -141,6 +148,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     }
 
+    // properties test data
     public void createTestData(){
 
         RealEstate realEstate1 = new RealEstate();

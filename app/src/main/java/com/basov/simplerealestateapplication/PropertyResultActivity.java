@@ -26,14 +26,18 @@ public class PropertyResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_list);
 
+        // get rooms value
         Intent intent = getIntent(); // gets the previously created intent
         rooms = intent.getStringExtra("rooms");
 
 
+        // get "viewOnMapBtn" reference and set onClick listener
         viewOnMapBtn = (Button) findViewById(R.id.viewOnMapBtn);
         viewOnMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // switch to "MapsActivity" with rooms value parameter
                 Intent intent = new Intent(PropertyResultActivity.this, MapsActivity.class);
                 intent.putExtra("rooms",rooms);
                 startActivity(intent);
@@ -55,36 +59,49 @@ public class PropertyResultActivity extends AppCompatActivity {
         dbHandler.open();
         Cursor c = dbHandler.readEntry(rooms);
 
+        // get total number of records
         int rows = c.getCount();
-        int cols = 5; //c.getColumnCount();
+        int cols = 5; // number of first columns to display
 
         c.moveToFirst();
 
         // outer for loop
         for (int i = 0; i < rows; i++) {
 
+            // create table row
             TableRow row = new TableRow(this);
+
+            // set row params
             row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
 
             // inner for loop
             for (int j = 1; j < cols; j++) {
 
+                //create text view
                 TextView tv = new TextView(this);
+
+                // set text view params
                 tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                         TableRow.LayoutParams.WRAP_CONTENT));
+
+                // text align, size and padding
                 tv.setGravity(Gravity.CENTER);
                 tv.setTextSize(18);
                 tv.setPadding(0, 5, 0, 5);
 
+                // set text view object value
                 tv.setText(c.getString(j));
 
+                // add text view to row
                 row.addView(tv);
 
             }
 
+            // move to next property
             c.moveToNext();
 
+            // add row to table layout
             table_layout.addView(row);
 
         }

@@ -38,15 +38,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //create databse handler
         dbHandler = new MyDBHandler(this);
 
+        // get intent and get rooms request value
         Intent intent = getIntent(); // gets the previously created intent
         rooms = intent.getStringExtra("rooms");
 
+        // get "viewOnListBtn" reference
         viewOnListBtn = (Button) findViewById(R.id.viewOnListBtn);
+
+        //set onclick listener
         viewOnListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // switch to "PropertyResultActivity" and pass rooms value
+
                 Intent intent = new Intent(MapsActivity.this, PropertyResultActivity.class);
                 intent.putExtra("rooms", rooms);
                 startActivity(intent);
@@ -70,47 +78,69 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-
+        // define markers array
         ArrayList<Marker> markers = new ArrayList<>();
 
+        // get rooms value
         Intent intent = getIntent(); // gets the previously created intent
         String rooms = intent.getStringExtra("rooms");
 
+        // if no rooms value then it is request for all properties
         if(rooms == null){
             rooms = "*";
         }
 
+        // get properties from database
         dbHandler.open();
         Cursor c = dbHandler.readEntry(rooms);
 
         c.moveToFirst();
+
+        // define total number of found records
         int rows = c.getCount();
         if(rows > 0){
+            // loop propeties
             for (int i = 0; i < rows; i++) {
 
+
                 String name = c.getString(1);
+
+                // get map coordinates as double type values
                 Double lat = new Double(c.getString(8));
                 Double lng = new Double(c.getString(7));
 
+                // create map marker
                 Marker marker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(lat, lng))
                         .title(name));
 
+                // add marker to markers list
                 markers.add(marker);
+
+                // move to next property
                 c.moveToNext();
             }
 
+            // define bounds builder
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for (Marker marker : markers) {
+                //add marker positions to bounds builder
                 builder.include(marker.getPosition());
             }
+
+            //build bounds
             LatLngBounds bounds = builder.build();
 
+
             int padding = 0; // offset from edges of the map in pixels
+
+            //create "camera update" object with built bounds
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
 
+            // move camera to markers bounds
             googleMap.moveCamera(cu);
 
+            // zoom camera
             googleMap.animateCamera( CameraUpdateFactory.zoomTo( 13.0f ) );
         }
 
@@ -124,11 +154,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-
-    public void addMarker(Cursor c ){
-        // Add a marker in Sydney and move the camera
-        LatLng location = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(location).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-    }
 }

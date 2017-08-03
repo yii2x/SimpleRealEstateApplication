@@ -4,6 +4,10 @@
 
 package com.basov.simplerealestateapplication;
 
+
+/*
+Data Model to hold real estate values
+ */
 public class RealEstate {
 
     // define variables for the columns
